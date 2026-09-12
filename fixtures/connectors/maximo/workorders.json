@@ -1,0 +1,11 @@
+{
+  "records": [
+    {
+      "id": "WO-501",
+      "wo": "WO-501",
+      "asset_id": "FP-01",
+      "status": "open",
+      "task": "monthly_flow_test"
+    }
+  ]
+}

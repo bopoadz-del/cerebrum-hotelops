@@ -1,0 +1,18 @@
+{
+  "records": [
+    {
+      "id": "IH-1",
+      "room": "1204",
+      "guest_id": "G-NOOR",
+      "status": "in_house",
+      "vip": true
+    },
+    {
+      "id": "IH-2",
+      "room": "0808",
+      "guest_id": "G-SAM",
+      "status": "in_house",
+      "vip": false
+    }
+  ]
+}

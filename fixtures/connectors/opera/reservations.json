@@ -1,0 +1,37 @@
+{
+  "records": [
+    {
+      "id": "R-1001",
+      "confirmation_id": "CNF-DXB-1001",
+      "guest_id": "G-AYA",
+      "arrival": "2026-09-18",
+      "departure": "2026-09-21",
+      "room_type": "king",
+      "status": "reserved",
+      "rate_code": "BAR",
+      "market": "uae"
+    },
+    {
+      "id": "R-1002",
+      "confirmation_id": "CNF-GEN-2044",
+      "guest_id": "G-MARCO",
+      "arrival": "2026-09-19",
+      "departure": "2026-09-22",
+      "room_type": "suite",
+      "status": "reserved",
+      "rate_code": "CORP",
+      "market": "generic"
+    },
+    {
+      "id": "R-1003",
+      "confirmation_id": "CNF-DXB-1003",
+      "guest_id": "G-NOOR",
+      "arrival": "2026-09-12",
+      "departure": "2026-09-14",
+      "room_type": "twin",
+      "status": "in_house",
+      "rate_code": "LOY-GLD",
+      "market": "uae"
+    }
+  ]
+}

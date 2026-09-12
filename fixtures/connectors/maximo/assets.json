@@ -1,0 +1,37 @@
+{
+  "records": [
+    {
+      "asset_id": "FP-01",
+      "asset_type": "fire_pump",
+      "serial_number": "AFP-77821",
+      "location": "B1-PUMP-ROOM",
+      "manufacturer": "Armstrong",
+      "install_date": "2026-03-12",
+      "source_system": "maximo",
+      "evidence_class": "A",
+      "statutory_flag": true
+    },
+    {
+      "asset_id": "EL-03",
+      "asset_type": "elevator",
+      "serial_number": "OTS-4401",
+      "location": "CORE-A",
+      "manufacturer": "Otis",
+      "install_date": "2026-04-02",
+      "source_system": "maximo",
+      "evidence_class": "B",
+      "statutory_flag": true
+    },
+    {
+      "asset_id": "AHU-12",
+      "asset_type": "ahu",
+      "serial_number": "CAR-991",
+      "location": "L12-PLANT",
+      "manufacturer": "Carrier",
+      "install_date": "2026-05-01",
+      "source_system": "csv_upload",
+      "evidence_class": "C",
+      "statutory_flag": false
+    }
+  ]
+}

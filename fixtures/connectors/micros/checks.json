@@ -1,0 +1,22 @@
+{
+  "records": [
+    {
+      "id": "CHK-88",
+      "check_id": "CHK-88",
+      "outlet": "all_day_dining",
+      "amount": 214.5,
+      "room": "1204",
+      "covers": 2,
+      "closed": true
+    },
+    {
+      "id": "CHK-89",
+      "check_id": "CHK-89",
+      "outlet": "lobby_lounge",
+      "amount": 46.0,
+      "room": "0808",
+      "covers": 1,
+      "closed": false
+    }
+  ]
+}

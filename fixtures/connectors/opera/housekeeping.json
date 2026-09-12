@@ -1,0 +1,14 @@
+{
+  "records": [
+    {
+      "id": "HK-1204",
+      "room": "1204",
+      "hk_status": "inspected"
+    },
+    {
+      "id": "HK-0808",
+      "room": "0808",
+      "hk_status": "dirty"
+    }
+  ]
+}

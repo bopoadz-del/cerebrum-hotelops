@@ -1,0 +1,16 @@
+{
+  "asset_type": "fire_pump",
+  "asset_id": "FP-01",
+  "documents": [
+    "as_built_drawing",
+    "witnessed_commissioning_sheet",
+    "nameplate_photo_unobstructed",
+    "serial_on_asset_register"
+  ],
+  "photo_tags": [],
+  "nameplate_readable": true,
+  "serial_on_certificate": "AFP-77821",
+  "serial_on_register": "AFP-77821",
+  "test_age_days": 20,
+  "site_witness": true
+}
