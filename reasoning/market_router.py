@@ -6,36 +6,62 @@ from typing import Any
 
 from domain_kit.loader import load_kit
 from reasoning.guard import GuardError, guard_request
+from reasoning.sheet import class_b_meta
 
 
 class MarketRouter:
     """UAE + generic only. No KSA pack or branch."""
 
+    DEMO = {"uae", "generic"}
     UAE = {"uae", "dubai", "abu_dhabi", "abudhabi", "sharjah", "ajman"}
-    GENERIC = {"generic"}
 
-    def resolve_market(self, market: str) -> str:
-        code = (market or "").lower().strip()
-        guard_request(market=code)
+    def normalize(self, market: str | None, *, demo_only: bool = False) -> str:
+        code = (market or "generic").lower().strip()
+        guard_request(market=code, demo_only=demo_only)
         if code in self.UAE:
             return "uae"
-        if code in self.GENERIC:
+        if code == "generic":
             return "generic"
         raise GuardError("market_unsupported", f"Market {market!r} is not UAE or generic.")
 
-    def licensing_pack(self, market: str) -> dict[str, Any]:
-        code = self.resolve_market(market)
+    def resolve_market(self, market: str) -> str:
+        return self.normalize(market)
+
+    def licensing_pack(self, market: str | None) -> dict[str, Any]:
         kit = load_kit()
-        uae = getattr(kit, "licensing_uae", None) or {}
-        gen = getattr(kit, "licensing_generic", None) or {}
+        code = self.normalize(market)
         if code == "uae":
+            prereq = getattr(kit, "licensing_prereq", None)
+            maps = (prereq.get("maps") if isinstance(prereq, dict) else None) or {}
             return {
                 "market": "uae",
-                "licenses": (uae.get("licenses") if isinstance(uae, dict) else uae) or [],
-                "prerequisites": (uae.get("prerequisite_map") if isinstance(uae, dict) else {}) or {},
+                "licenses": kit.licensing_uae["licenses"],
+                "prerequisites": maps,
+                **class_b_meta(),
             }
         return {
             "market": "generic",
-            "licenses": (gen.get("licenses") if isinstance(gen, dict) else gen) or [],
-            "prerequisites": (gen.get("prerequisite_map") if isinstance(gen, dict) else {}) or {},
+            "licenses": kit.licensing_generic["licenses"],
+            "prerequisites": kit.licensing_generic.get("prerequisite_map") or {},
+            **class_b_meta(),
+        }
+
+    def ppm_pack(self, market: str | None) -> dict[str, Any]:
+        code = self.normalize(market)
+        kit = load_kit()
+        if code == "uae":
+            return kit.ppm_uae_statutory
+        return {
+            "market": code,
+            "layer": "statutory_floor",
+            "authoritative_frequencies": False,
+            "tasks": [],
+            "duties": [
+                {"id": "STAT-FIRE", "asset_types": ["fire_pump", "fire_alarm"], "authority": "fire_service"},
+                {"id": "STAT-LIFT", "asset_types": ["elevator"], "authority": "lift_authority"},
+                {"id": "STAT-PRESSURE", "asset_types": ["pressure_vessel"], "authority": "pressure_vessel"},
+                {"id": "STAT-WATER", "asset_types": ["domestic_water"], "authority": "water_hygiene"},
+            ],
+            "note": "Statutory floor only. Operator SOP is mandatory. Frequencies are never estimated.",
+            **class_b_meta(),
         }
