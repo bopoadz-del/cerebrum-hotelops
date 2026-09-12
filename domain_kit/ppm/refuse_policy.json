@@ -1,0 +1,17 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "rule": "two_layer_ppm_refuse",
+  "supported_markets": [
+    "uae",
+    "generic"
+  ],
+  "refuse_if": [
+    "statutory_duty_missing_for_jurisdiction",
+    "operator_sop_absent_or_unnamed",
+    "caller_asks_for_generic_frequency_table_as_authority"
+  ],
+  "message": "PPM is two-layer: a statutory floor (fire, lift, pressure vessel, water hygiene \u2014 never estimated) plus a named operator SOP. Empty SOP mounts and generic frequency tables are refused."
+}

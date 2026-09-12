@@ -1,0 +1,64 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B expert recall. Platform-owner discussion list — not Class A fact.",
+  "open_list_note": "The mitigation library is append-only. Adding new M-entries is an ongoing developer responsibility as the sheet and operator uploads grow. Do not overwrite historical rows.",
+  "gaps": [
+    {
+      "id": 1,
+      "title": "Mass recruitment vs key-hire timing is not one date",
+      "detail": "GM ideally T-12; Engineering and Housekeeping need to be in post by T-3 for commissioning inheritance and snag discovery; general mass recruitment sits T-3–6. Fallback is a sister-property task force, which is a different risk profile than a hired department head."
+    },
+    {
+      "id": 2,
+      "title": "C&E matrix vs individual tests",
+      "detail": "Individual fire/life-safety tests can pass while the integrated interfaced response fails (detection → dampers → pressurisation → lifts → door release → BMS). Never infer integrated function from unit tests."
+    },
+    {
+      "id": 3,
+      "title": "Fire/CD is the computed last licensing approval",
+      "detail": "Occupancy/completion is paced by the last approval on the licensing path. That node is computed from the prerequisite graph, not a hardcoded lead-time constant. Disputed attribution extends the delay."
+    },
+    {
+      "id": 4,
+      "title": "OS&E fit/function failure",
+      "detail": "Goods can be delivered on programme and still be unusable (clock with no socket). Upstream: BOQ freeze, operator engagement, long-lead flag, sample approval."
+    },
+    {
+      "id": 5,
+      "title": "Asset register ownership",
+      "detail": "Ideal: Owner-developed + Operator-maintained. Fallback: Operator-alone. BIM-driven Owner path is the most accurate origin — the platform still ingests only a structured extract."
+    },
+    {
+      "id": 6,
+      "title": "No BIM file ingest",
+      "detail": "A BIM-origin register is welcome as a source note. The platform never parses IFC/Navisworks/Aconex/Procore."
+    },
+    {
+      "id": 7,
+      "title": "Sheet facts stay Class B until owner artefacts exist",
+      "detail": "Promote a row to Class A only when brand standards, manning, OS&E matrices, licence trackers, or PPM records are uploaded."
+    },
+    {
+      "id": 8,
+      "title": "FF&E vs OS&E is the wrong contest",
+      "detail": "Approvers are distributed (designer → optional operator → owner budget); procurement is centralized Owner-via-agent. The real hole is unassigned operational items (IPTV/displays, desk power) — checkpoint M-6."
+    },
+    {
+      "id": 9,
+      "title": "Delayed T&C forces acceptance",
+      "detail": "Category C handover timing: late testing and commissioning pushes the operator into conditional acceptance; snags continue after opening."
+    },
+    {
+      "id": 10,
+      "title": "Category D commercial drag",
+      "detail": "DLP-deferred defects, out-of-scope testing disputes, and late attic stock/spares keep dragging after M-15."
+    },
+    {
+      "id": 11,
+      "title": "Mitigation library is append-only",
+      "detail": "M-1–M-15 is the current sheet set. New operator or brand findings are appended; they are not a reason to empty this file."
+    }
+  ]
+}

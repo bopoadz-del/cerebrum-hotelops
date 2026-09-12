@@ -1,0 +1,95 @@
+{
+  "market": "uae",
+  "emirates": ["dubai", "abu_dhabi", "sharjah", "generic_uae"],
+  "supported_markets": ["uae"],
+  "class_b_source": "general_hospitality_encoding_sheet_mapped_to_uae",
+  "licenses": [
+    {
+      "id": "UAE-DED",
+      "name": "DED / DET trade license (hotel activity)",
+      "authority": "DED_or_DET",
+      "emirate": "all",
+      "prerequisites": []
+    },
+    {
+      "id": "UAE-EJARI",
+      "name": "Ejari / tenancy registration (Dubai) or Tawtheeq (Abu Dhabi)",
+      "authority": "rera_or_adrec",
+      "prerequisites": ["UAE-DED"]
+    },
+    {
+      "id": "UAE-UTIL",
+      "name": "Utility accounts (DEWA / ADDC / SEWA + district cooling)",
+      "authority": "utility",
+      "prerequisites": ["UAE-DED", "UAE-EJARI"],
+      "class_b_note": "Meters and account numbers are required before Civil Defense inspection pacing."
+    },
+    {
+      "id": "UAE-ISP",
+      "name": "Etisalat / du primary + failover circuits",
+      "authority": "telecom",
+      "prerequisites": ["UAE-DED"],
+      "lead_time_days": 60,
+      "class_b_note": "ISP lead time is a recurring M12 blocker; order at M02/M03, not at cutover."
+    },
+    {
+      "id": "UAE-CCTV",
+      "name": "Police-linked CCTV and control-room approval",
+      "authority": "police",
+      "prerequisites": ["UAE-DED"],
+      "class_b_note": "Public-area and fire-command-room coverage is a commonly missed Civil Defense / occupancy prerequisite."
+    },
+    {
+      "id": "UAE-CD",
+      "name": "Civil Defense fire NOC",
+      "authority": "civil_defense",
+      "prerequisites": [
+        "UAE-DED",
+        "UAE-UTIL",
+        "UAE-CCTV",
+        "fire_pump_class_a",
+        "fire_alarm_cx",
+        "emergency_lighting_cx"
+      ]
+    },
+    {
+      "id": "UAE-DTCM",
+      "name": "DTCM hotel classification (Dubai) / DCT (Abu Dhabi)",
+      "authority": "DTCM_or_DCT",
+      "prerequisites": ["UAE-DED", "UAE-CD", "UAE-ISP"],
+      "class_b_note": "Star classification inspects guest Wi-Fi, rooms, and public areas after fire NOC."
+    },
+    {
+      "id": "UAE-DM-FOOD",
+      "name": "Municipality food establishment permit",
+      "authority": "DM_or_ADFCA",
+      "prerequisites": ["UAE-DED"]
+    },
+    {
+      "id": "UAE-POOL",
+      "name": "Swimming pool / spa permit",
+      "authority": "municipality_health",
+      "prerequisites": ["UAE-DM-FOOD"]
+    },
+    {
+      "id": "UAE-ESTAB",
+      "name": "Establishment immigration card",
+      "authority": "ICP_or_GDRFA",
+      "prerequisites": ["UAE-DED"]
+    },
+    {
+      "id": "UAE-MUSIC",
+      "name": "Music / public performance",
+      "authority": "copyright_society_uae",
+      "prerequisites": ["UAE-DTCM"],
+      "optional": true
+    },
+    {
+      "id": "UAE-SIGNAGE",
+      "name": "External signage permit",
+      "authority": "municipality",
+      "prerequisites": ["UAE-DED"],
+      "optional": true
+    }
+  ]
+}

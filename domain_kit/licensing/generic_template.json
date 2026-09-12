@@ -1,0 +1,85 @@
+{
+  "market": "generic",
+  "template_id": "hotel_license_generic_v1",
+  "class_b_source": "general_hospitality_encoding_sheet",
+  "licenses": [
+    {
+      "id": "GEN-TRADE",
+      "name": "Trade / establishment license",
+      "authority": "local_municipality",
+      "prerequisites": []
+    },
+    {
+      "id": "GEN-UTIL",
+      "name": "Utility accounts (power, water, district cooling)",
+      "authority": "utility_companies",
+      "prerequisites": ["GEN-TRADE"],
+      "class_b_note": "Account opening is a common critical-path miss; meters and contract numbers are required before fire occupancy inspection."
+    },
+    {
+      "id": "GEN-ISP",
+      "name": "Primary + failover ISP circuits",
+      "authority": "telecom",
+      "prerequisites": ["GEN-TRADE"],
+      "lead_time_days": 60,
+      "class_b_note": "Circuit lead time regularly exceeds FF&E install. Order at design freeze, not at systems cutover."
+    },
+    {
+      "id": "GEN-CCTV",
+      "name": "CCTV / security control-room permit",
+      "authority": "police_or_municipality",
+      "prerequisites": ["GEN-TRADE"],
+      "class_b_note": "Camera coverage of public areas and the fire command room is a commonly missed occupancy prerequisite."
+    },
+    {
+      "id": "GEN-FIRE",
+      "name": "Fire safety occupancy",
+      "authority": "fire_service",
+      "prerequisites": [
+        "GEN-TRADE",
+        "GEN-UTIL",
+        "GEN-CCTV",
+        "fire_pump_class_a_or_b"
+      ]
+    },
+    {
+      "id": "GEN-FOOD",
+      "name": "Food premises permit",
+      "authority": "health",
+      "prerequisites": ["GEN-TRADE"]
+    },
+    {
+      "id": "GEN-TOURISM",
+      "name": "Tourism / lodging permit",
+      "authority": "tourism_board",
+      "prerequisites": ["GEN-TRADE", "GEN-FIRE"]
+    },
+    {
+      "id": "GEN-STAR",
+      "name": "Star / classification inspection",
+      "authority": "tourism_board",
+      "prerequisites": ["GEN-TOURISM", "GEN-ISP"],
+      "class_b_note": "Classification inspects rooms, public areas, and guest Wi-Fi. Incomplete ISP or model rooms block the star rating, not just the trade license."
+    },
+    {
+      "id": "GEN-POOL",
+      "name": "Pool / spa health",
+      "authority": "health",
+      "prerequisites": ["GEN-FOOD"],
+      "optional": true
+    },
+    {
+      "id": "GEN-MUSIC",
+      "name": "Public performance / music",
+      "authority": "copyright_society",
+      "prerequisites": ["GEN-TRADE"],
+      "optional": true
+    }
+  ],
+  "prerequisite_map": {
+    "GEN-FIRE": ["GEN-TRADE", "GEN-UTIL", "GEN-CCTV", "fire_pump_class_a_or_b"],
+    "GEN-TOURISM": ["GEN-TRADE", "GEN-FIRE"],
+    "GEN-STAR": ["GEN-TOURISM", "GEN-ISP"],
+    "soft_opening": ["GEN-TRADE", "GEN-FIRE", "GEN-TOURISM"]
+  }
+}

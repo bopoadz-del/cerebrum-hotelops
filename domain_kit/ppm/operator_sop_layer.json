@@ -1,0 +1,10 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "layer": "operator_sop",
+  "refuse_without_named_sop": true,
+  "never_emit_generic_frequency_as_authoritative": true,
+  "readme": "domain_kit/ppm/operator_sop/README.md"
+}

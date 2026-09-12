@@ -1,0 +1,31 @@
+{
+  "market": "uae",
+  "maps": {
+    "UAE-UTIL": ["UAE-DED", "UAE-EJARI"],
+    "UAE-ISP": ["UAE-DED"],
+    "UAE-CCTV": ["UAE-DED"],
+    "UAE-CD": [
+      "UAE-DED",
+      "UAE-UTIL",
+      "UAE-CCTV",
+      "fire_pump_class_a",
+      "fire_alarm_cx",
+      "emergency_lighting_cx"
+    ],
+    "UAE-DTCM": ["UAE-DED", "UAE-CD", "UAE-ISP"],
+    "UAE-DM-FOOD": ["UAE-DED"],
+    "UAE-POOL": ["UAE-DM-FOOD"],
+    "UAE-ESTAB": ["UAE-DED"],
+    "UAE-EJARI": ["UAE-DED"],
+    "fire_pump_class_a": [
+      "INV-FIRE-PUMP-COVERS-CLIPS:clear",
+      "INV-FIRE-PUMP-SERIAL-MISMATCH:clear",
+      "INV-FIRE-PUMP-STALE-TEST:clear"
+    ],
+    "soft_opening": ["UAE-DED", "UAE-CD", "UAE-DTCM", "UAE-UTIL", "UAE-CCTV"]
+  },
+  "refuse": {
+    "unsupported_market": "Pilot markets are UAE + generic only. No other country pack is loaded.",
+    "missing_prereq": "License is UNPROVABLE until every prerequisite is PASS."
+  }
+}
