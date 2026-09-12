@@ -1,0 +1,55 @@
+{
+  "schema": "engineering_inheritance_v1",
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "category_files": [
+    "category_a_systems.json",
+    "category_b_design_locked.json",
+    "category_c_handover_timing.json",
+    "category_d_commercial_drag.json"
+  ],
+  "classes": {
+    "A": {
+      "name": "Certified as-built + witnessed test + serial match",
+      "minimum_evidence": [
+        "as_built_drawing",
+        "witnessed_commissioning_sheet",
+        "nameplate_photo_unobstructed",
+        "serial_on_asset_register"
+      ],
+      "verdict_if_complete": "PASS",
+      "notes": "Only Class A may be used as Civil Defense statutory primary evidence."
+    },
+    "B": {
+      "name": "As-built + commissioning report without serial match",
+      "minimum_evidence": [
+        "as_built_drawing",
+        "commissioning_report"
+      ],
+      "verdict_if_complete": "PASS",
+      "notes": "Acceptable for operator PPM start; not sufficient for fire pump statutory pack."
+    },
+    "C": {
+      "name": "Vendor literature / O&M only",
+      "minimum_evidence": [
+        "om_manual_or_datasheet"
+      ],
+      "verdict_if_complete": "UNPROVABLE",
+      "notes": "Cannot prove the installed asset is the one described."
+    },
+    "D": {
+      "name": "Verbal, unmarked photo, or unmarked drawing",
+      "minimum_evidence": [
+        "uncontrolled_photo_or_note"
+      ],
+      "verdict_if_complete": "FAIL",
+      "notes": "Rejected for inheritance. Re-survey required."
+    },
+    "Unprovable": {
+      "name": "No usable evidence",
+      "minimum_evidence": [],
+      "verdict_if_complete": "UNPROVABLE",
+      "notes": "Three-valued logic: absence is Unprovable, not a silent pass."
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "booking_funnel_v1",
+  "stages": [
+    {
+      "id": "awareness",
+      "order": 1,
+      "signals": [
+        "web_session",
+        "ota_impression"
+      ]
+    },
+    {
+      "id": "consider",
+      "order": 2,
+      "signals": [
+        "rate_shop",
+        "wishlist"
+      ]
+    },
+    {
+      "id": "book",
+      "order": 3,
+      "signals": [
+        "reservation_created"
+      ]
+    },
+    {
+      "id": "pre_arrival",
+      "order": 4,
+      "signals": [
+        "pre_arrival_email",
+        "upsell_offered"
+      ]
+    },
+    {
+      "id": "stay",
+      "order": 5,
+      "signals": [
+        "checked_in",
+        "in_stay_service"
+      ]
+    },
+    {
+      "id": "depart",
+      "order": 6,
+      "signals": [
+        "checked_out",
+        "folio_closed"
+      ]
+    },
+    {
+      "id": "loyalty",
+      "order": 7,
+      "signals": [
+        "points_posted",
+        "tier_review"
+      ]
+    }
+  ]
+}

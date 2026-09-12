@@ -1,0 +1,25 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "class": "D",
+  "name": "Commercial drag after opening",
+  "items": [
+    {
+      "id": "D-DLP",
+      "issue": "dlp_deferred_defects",
+      "note": "Defects parked into DLP instead of closed before opening."
+    },
+    {
+      "id": "D-SCOPE",
+      "issue": "out_of_scope_testing_disputes",
+      "note": "Who pays for re-test is still argued after keys."
+    },
+    {
+      "id": "D-ATTIC",
+      "issue": "late_attic_stock_spares",
+      "note": "Attic stock and spares arrive after opening, if at all."
+    }
+  ]
+}

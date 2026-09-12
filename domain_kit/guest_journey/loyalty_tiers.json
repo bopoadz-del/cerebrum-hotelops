@@ -1,0 +1,50 @@
+{
+  "program": "hotelops_loyalty_uae_generic",
+  "currency": "points",
+  "tiers": [
+    {
+      "id": "member",
+      "nights_from": 0,
+      "points_earn": 1.0,
+      "benefits": [
+        "late_checkout_subject_to_avail"
+      ]
+    },
+    {
+      "id": "silver",
+      "nights_from": 10,
+      "points_earn": 1.1,
+      "benefits": [
+        "welcome_drink",
+        "priority_wifi"
+      ]
+    },
+    {
+      "id": "gold",
+      "nights_from": 25,
+      "points_earn": 1.25,
+      "benefits": [
+        "room_upgrade_space_avail",
+        "breakfast"
+      ]
+    },
+    {
+      "id": "platinum",
+      "nights_from": 50,
+      "points_earn": 1.5,
+      "benefits": [
+        "suite_upgrade_space_avail",
+        "executive_lounge"
+      ]
+    },
+    {
+      "id": "ambassador",
+      "nights_from": 80,
+      "points_earn": 1.75,
+      "benefits": [
+        "guaranteed_late_checkout",
+        "gm_recognition"
+      ]
+    }
+  ]
+}

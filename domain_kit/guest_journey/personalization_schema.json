@@ -1,0 +1,68 @@
+{
+  "schema": "personalization_v1",
+  "attributes": {
+    "preferred_room_type": {
+      "type": "enum",
+      "values": [
+        "king",
+        "twin",
+        "suite",
+        "accessible"
+      ]
+    },
+    "pillow": {
+      "type": "enum",
+      "values": [
+        "soft",
+        "firm",
+        "hypoallergenic"
+      ]
+    },
+    "newspaper": {
+      "type": "enum",
+      "values": [
+        "none",
+        "national",
+        "financial"
+      ]
+    },
+    "arrival_transfer": {
+      "type": "boolean"
+    },
+    "quiet_room": {
+      "type": "boolean"
+    },
+    "high_floor": {
+      "type": "boolean"
+    },
+    "dietary": {
+      "type": "list",
+      "values": [
+        "halal",
+        "vegetarian",
+        "vegan",
+        "gluten_free",
+        "none"
+      ]
+    },
+    "language": {
+      "type": "enum",
+      "values": [
+        "en",
+        "ar",
+        "fr",
+        "ru",
+        "zh",
+        "hi"
+      ]
+    },
+    "marketing_opt_in": {
+      "type": "boolean",
+      "privacy": "required_explicit"
+    }
+  },
+  "forbidden": [
+    "face_biometric_without_opt_in",
+    "government_id_without_legal_basis"
+  ]
+}

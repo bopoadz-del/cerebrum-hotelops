@@ -1,0 +1,82 @@
+{
+  "taxonomy": [
+    {
+      "type": "reservation.created",
+      "surface": "guest",
+      "required": [
+        "confirmation_id",
+        "arrival",
+        "departure"
+      ]
+    },
+    {
+      "type": "reservation.cancelled",
+      "surface": "guest",
+      "required": [
+        "confirmation_id"
+      ]
+    },
+    {
+      "type": "guest.checked_in",
+      "surface": "both",
+      "required": [
+        "reservation_id",
+        "room"
+      ]
+    },
+    {
+      "type": "guest.checked_out",
+      "surface": "both",
+      "required": [
+        "reservation_id",
+        "folio_total"
+      ]
+    },
+    {
+      "type": "loyalty.enrolled",
+      "surface": "guest",
+      "required": [
+        "profile_id",
+        "tier"
+      ]
+    },
+    {
+      "type": "loyalty.points_posted",
+      "surface": "guest",
+      "required": [
+        "profile_id",
+        "points"
+      ]
+    },
+    {
+      "type": "service.request_opened",
+      "surface": "ops",
+      "required": [
+        "room",
+        "request_type"
+      ]
+    },
+    {
+      "type": "service.request_closed",
+      "surface": "ops",
+      "required": [
+        "request_id"
+      ]
+    },
+    {
+      "type": "complaint.opened",
+      "surface": "both",
+      "required": [
+        "severity"
+      ]
+    },
+    {
+      "type": "folio.charge_posted",
+      "surface": "guest",
+      "required": [
+        "amount",
+        "outlet"
+      ]
+    }
+  ]
+}

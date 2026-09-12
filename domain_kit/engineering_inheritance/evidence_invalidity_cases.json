@@ -1,0 +1,101 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "section": "9.1",
+  "cases": [
+    {
+      "id": "INV-FIRE-PUMP-TEST-TO-TANK",
+      "asset_type": "fire_pump",
+      "title": "Fire pump test-line-to-tank (invalid flow cert)",
+      "section": "9.1",
+      "invalid_when": {
+        "test_line_to_tank": true
+      },
+      "effect": "Flow certificate is invalid. Verdict FAIL for statutory / CD pack. Not Class A.",
+      "required_remediation": "Witness a duty-point test that proves flow into the system, not recirculation to the tank."
+    },
+    {
+      "id": "INV-FIRE-PUMP-COVERS-CLIPS",
+      "asset_type": "fire_pump",
+      "title": "Covers/clips left on \u2014 nameplate unreadable",
+      "section": "9.1",
+      "invalid_when": {
+        "covers_clips_removed": false,
+        "photo_tags_any": [
+          "cover_closed",
+          "clip_obscuring_nameplate",
+          "plastic_wrap_on_plate"
+        ]
+      },
+      "effect": "Cannot assign Class A. Unprovable if the photo is the only remaining evidence.",
+      "required_remediation": "Remove covers/clips; photograph serial, duty, impeller stamp; complete labelling."
+    },
+    {
+      "id": "INV-FIRE-PUMP-SERIAL-MISMATCH",
+      "asset_type": "fire_pump",
+      "title": "Certificate serial \u2260 register serial",
+      "invalid_when": {
+        "serial_match": false
+      },
+      "effect": "FAIL for statutory pack.",
+      "required_remediation": "Reconcile register or re-test the installed pump."
+    },
+    {
+      "id": "INV-FIRE-PUMP-STALE-TEST",
+      "asset_type": "fire_pump",
+      "title": "Factory test older than 12 months with no site witness",
+      "invalid_when": {
+        "test_age_days_gt": 365,
+        "site_witness": false
+      },
+      "effect": "UNPROVABLE for current condition.",
+      "required_remediation": "Site flow test witnessed by independent Cx \u2014 not to tank."
+    },
+    {
+      "id": "INV-GRMS-CERT-NE-CONFIG",
+      "asset_type": "grms",
+      "title": "GRMS certificate \u2260 live configuration",
+      "section": "9.1",
+      "invalid_when": {
+        "grms_cert_matches_config": false
+      },
+      "effect": "UNPROVABLE room readiness at room-by-room scale.",
+      "required_remediation": "Diff cert room list against live controller map; remap before M12 gate."
+    },
+    {
+      "id": "INV-GRMS-ROOM-MAP",
+      "asset_type": "grms",
+      "title": "GRMS config missing room mapping",
+      "invalid_when": {
+        "room_map_complete": false
+      },
+      "effect": "UNPROVABLE; block M12.",
+      "required_remediation": "Load complete room\u2192controller map."
+    },
+    {
+      "id": "INV-CE-UNIT-NOT-INTEGRATED",
+      "asset_type": "fire_life_safety",
+      "title": "Never infer integrated function from individual tests",
+      "section": "9.4.1",
+      "invalid_when": {
+        "individual_tests_pass": true,
+        "integrated_interface_test": false
+      },
+      "effect": "UNPROVABLE occupancy. Unit-test green is not a C&E pass.",
+      "required_remediation": "Witness the interfaced chain: detection\u2192dampers\u2192pressurisation\u2192lifts\u2192door release\u2192BMS."
+    },
+    {
+      "id": "INV-ELEVATOR-NO-TUV",
+      "asset_type": "elevator",
+      "title": "Elevator without UAE conformity mark",
+      "invalid_when": {
+        "conformity_mark": false,
+        "market": "uae"
+      },
+      "effect": "FAIL for UAE statutory.",
+      "required_remediation": "Attach TUV/Emirates Authority certificate."
+    }
+  ]
+}
