@@ -1,0 +1,15 @@
+{
+  "head_end": "grms-dxb-01",
+  "rooms": [
+    {
+      "room": "1204",
+      "controller_id": "CTRL-1204",
+      "floor": 12
+    },
+    {
+      "room": "1205",
+      "controller_id": null,
+      "floor": 12
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "registry_id": "pre_opening_mitigation_registry_v2",
+  "indexes": [
+    {
+      "id": "M-1",
+      "programme_milestone": "M13",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-2",
+      "programme_milestone": "M12",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-3",
+      "programme_milestone": "M09",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-4",
+      "programme_milestone": "M10",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-5",
+      "programme_milestone": "M13",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-6",
+      "programme_milestone": "M02",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-7",
+      "programme_milestone": "M07",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-8",
+      "programme_milestone": "M12",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-9",
+      "programme_milestone": "M13",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-10",
+      "programme_milestone": "M07",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-11",
+      "programme_milestone": "M14",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-12",
+      "programme_milestone": "M13",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-13",
+      "programme_milestone": "M15",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-14",
+      "programme_milestone": "M14",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    },
+    {
+      "id": "M-15",
+      "programme_milestone": "M15",
+      "evidence_class": "B",
+      "source": "domain_encoding_sheet_sep2026"
+    }
+  ],
+  "append_only": true,
+  "escalation": [
+    {
+      "from_severity": "watch",
+      "to": "alert",
+      "after_days": 7
+    },
+    {
+      "from_severity": "alert",
+      "to": "critical",
+      "after_days": 7
+    }
+  ]
+}

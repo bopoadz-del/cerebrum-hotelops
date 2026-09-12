@@ -1,0 +1,11 @@
+{
+  "records": [
+    {
+      "id": "P-77",
+      "player_id": "P-77",
+      "comp_balance": 1200,
+      "host": "host.lena",
+      "linked_reservation": "CNF-GEN-2044"
+    }
+  ]
+}

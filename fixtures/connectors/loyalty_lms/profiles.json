@@ -1,0 +1,28 @@
+{
+  "records": [
+    {
+      "id": "G-AYA",
+      "profile_id": "G-AYA",
+      "tier": "gold",
+      "nights": 28,
+      "points": 14200,
+      "market": "uae"
+    },
+    {
+      "id": "G-MARCO",
+      "profile_id": "G-MARCO",
+      "tier": "silver",
+      "nights": 12,
+      "points": 3100,
+      "market": "generic"
+    },
+    {
+      "id": "G-NOOR",
+      "profile_id": "G-NOOR",
+      "tier": "platinum",
+      "nights": 61,
+      "points": 40880,
+      "market": "uae"
+    }
+  ]
+}

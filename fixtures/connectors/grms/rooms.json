@@ -1,0 +1,14 @@
+{
+  "records": [
+    {
+      "room": "1204",
+      "dnd": false,
+      "occupied": true
+    },
+    {
+      "room": "0808",
+      "dnd": true,
+      "occupied": true
+    }
+  ]
+}
