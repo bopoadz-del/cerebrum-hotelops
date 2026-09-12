@@ -13,6 +13,6 @@ Offline pytest is the pilot gate. No Opera, Micros, Jetson, or LLM secrets.
 
 `tests/RUNLOG.md` is written by the acceptance module.
 
-Demo geography: **UAE + generic only**. KSA is unsupported and stripped.
+Demo geography: **UAE + generic**. KSA is unsupported and stripped — no `domain_kit/licensing/ksa.json` pack.
 
 Sheet facts are never presented as Class A.

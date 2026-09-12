@@ -21,5 +21,4 @@ Not in this product (by owner constraint, not a leftover stub):
 - Aconex / Procore / BIM file parse (structured register ingest only)
 - Promoting Domain Encoding Sheet rows to Class A without owner artefacts
 
-KSA is unsupported and stripped. There is no KSA licensing pack or demo
-property. Fixtures stay UAE + generic.
+KSA licensing is stripped. Fixtures and demo geography stay UAE + generic only.
