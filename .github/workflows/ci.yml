@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  offline-pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Vendor lock
+        run: python scripts/check_vendor_lock.py
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Pytest offline
+        env:
+          HOTELOPS_FIXTURE_MODE: "1"
+          HOTELOPS_LLM_PROVIDER: fake
+          DATABASE_URL: sqlite+pysqlite:///:memory:
+        run: pytest
+      - name: KSA stripped — UAE + generic only
+        run: |
+          test ! -e domain_kit/licensing/ksa.json
+          test -z "$(find domain_kit -iname '*ksa*')"

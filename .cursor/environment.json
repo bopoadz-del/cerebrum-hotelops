@@ -1,0 +1,17 @@
+{
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "install": "python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt && cd frontend && npm install",
+  "terminals": [
+    {
+      "name": "api",
+      "command": ". .venv/bin/activate && uvicorn api.main:app --host 0.0.0.0 --port 43180"
+    },
+    {
+      "name": "web",
+      "command": "cd frontend && npm run dev -- --host 0.0.0.0 --port 43123"
+    }
+  ]
+}
