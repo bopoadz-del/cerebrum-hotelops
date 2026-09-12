@@ -1,0 +1,71 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: hotelops
+      POSTGRES_PASSWORD: hotelops
+      POSTGRES_DB: hotelops
+    ports:
+      - "55432:5432"
+    volumes:
+      - hotelops_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hotelops"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "56379:6379"
+
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    command: >
+      uvicorn api.main:app --host 0.0.0.0 --port 43180
+    environment:
+      HOTELOPS_HOST: 0.0.0.0
+      HOTELOPS_PORT: 43180
+      HOTELOPS_FIXTURE_MODE: "1"
+      HOTELOPS_LLM_PROVIDER: fake
+      DATABASE_URL: postgresql+psycopg://hotelops:hotelops@postgres:5432/hotelops
+      REDIS_URL: redis://redis:6379/0
+      HOTELOPS_OPERATOR_TOKEN: operator-pilot
+      HOTELOPS_REVIEWER_TOKEN: reviewer-pilot
+    ports:
+      - "43180:43180"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  workers:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    command: python -m workers.run
+    environment:
+      HOTELOPS_FIXTURE_MODE: "1"
+      HOTELOPS_LLM_PROVIDER: fake
+      DATABASE_URL: postgresql+psycopg://hotelops:hotelops@postgres:5432/hotelops
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      - api
+
+  web:
+    build:
+      context: ../frontend
+      dockerfile: ../deploy/Dockerfile.web
+    environment:
+      VITE_API_BASE: http://127.0.0.1:43180
+    ports:
+      - "43123:43123"
+    depends_on:
+      - api
+
+volumes:
+  hotelops_pg:

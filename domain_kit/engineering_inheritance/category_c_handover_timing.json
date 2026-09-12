@@ -1,0 +1,20 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "class": "C",
+  "name": "Handover timing failures",
+  "items": [
+    {
+      "id": "C-TANDC",
+      "issue": "delayed_testing_and_commissioning",
+      "note": "Delayed T&C forces acceptance. Operator inherits an open list."
+    },
+    {
+      "id": "C-SNAG",
+      "issue": "snags_continue_post_opening",
+      "note": "Snags remain live after first guests. Not a closed Category A pack."
+    }
+  ]
+}

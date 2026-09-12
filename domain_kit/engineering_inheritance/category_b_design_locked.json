@@ -1,0 +1,25 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "class": "B",
+  "name": "Design-locked constraints (cannot be commissioned away)",
+  "items": [
+    {
+      "id": "B-GREEN",
+      "issue": "green_systems_retrofit_limited",
+      "note": "Green / low-energy systems are limited once the plant is locked; retrofit is not a Cx action."
+    },
+    {
+      "id": "B-PANEL",
+      "issue": "no_spare_electrical_panel_capacity",
+      "note": "No spare ways on electrical panels for opening extras (IPTV, desk power, F&B pop-ups)."
+    },
+    {
+      "id": "B-CEILING",
+      "issue": "above_ceiling_inaccessibility",
+      "note": "Above-ceiling plant cannot be reached for inheritance tests or later PPM."
+    }
+  ]
+}

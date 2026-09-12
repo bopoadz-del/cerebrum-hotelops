@@ -1,0 +1,53 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "section": "7.2",
+  "asset_register_source_note": {
+    "ideal": "Owner-developed and Operator-maintained",
+    "fallback": "Operator-alone",
+    "most_accurate_origin": "BIM-driven Owner path \u2014 still exported to a structured register before ingest",
+    "allowed_sources": [
+      "csv",
+      "json",
+      "cmms_maximo_export"
+    ],
+    "forbidden_sources": [
+      "aconex",
+      "procore",
+      "bim_ifc",
+      "navisworks",
+      "revit"
+    ],
+    "reason": "Platform ingests a structured register only. Never BIM files, never Aconex/Procore.",
+    "required_columns": [
+      "asset_id",
+      "asset_type",
+      "location",
+      "serial_number",
+      "manufacturer",
+      "install_date",
+      "source_system",
+      "evidence_class",
+      "statutory_flag"
+    ],
+    "source_system_enum": [
+      "csv_upload",
+      "json_upload",
+      "maximo",
+      "owner_register"
+    ],
+    "example_row": {
+      "asset_id": "FP-01",
+      "asset_type": "fire_pump",
+      "location": "B1-PUMP-ROOM",
+      "serial_number": "AFP-77821",
+      "manufacturer": "Armstrong",
+      "install_date": "2026-03-12",
+      "source_system": "maximo",
+      "evidence_class": "A",
+      "statutory_flag": true
+    }
+  }
+}

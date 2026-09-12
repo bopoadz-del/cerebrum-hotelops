@@ -1,0 +1,9 @@
+# Optional Jetson edge node. Not required for the offline pilot.
+services:
+  jetson-gateway:
+    image: nvcr.io/nvidia/l4t-base:r36.2.0
+    profiles: ["jetson"]
+    environment:
+      JETSON_DEVICE_TOKEN: ${JETSON_DEVICE_TOKEN:-}
+    command: echo "Jetson image is a hardware gate — see KNOWN_LIMITATIONS.md"
+    restart: "no"

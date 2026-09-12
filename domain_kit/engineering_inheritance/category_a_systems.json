@@ -1,0 +1,60 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "class": "A",
+  "name": "Systems that commonly fail inheritance (must be proven, not assumed)",
+  "items": [
+    {
+      "id": "A-BMS",
+      "system": "bms",
+      "note": "Most common inheritance failure. Points list and integrated interfaces drift after Cx."
+    },
+    {
+      "id": "A-CCTV",
+      "system": "cctv",
+      "note": "Post-commission signal loss. FAT green does not prove live police/MOI feed."
+    },
+    {
+      "id": "A-GRMS",
+      "system": "grms",
+      "note": "Misconfiguration at room-by-room scale. Certificate often \u2260 loaded config."
+    },
+    {
+      "id": "A-ICT",
+      "system": "ict_licences",
+      "note": "Licence gaps or expired keys at opening."
+    },
+    {
+      "id": "A-FIRE-PUMP-TANK",
+      "system": "fire_pump",
+      "note": "Test-line-to-tank yields an invalid flow certificate."
+    },
+    {
+      "id": "A-COVERS",
+      "system": "fire_pump_and_valves",
+      "note": "Covers/clips not removed; nameplate and labels unreadable."
+    },
+    {
+      "id": "A-LABEL",
+      "system": "labelling",
+      "note": "Incomplete labelling breaks register match."
+    },
+    {
+      "id": "A-ODOUR",
+      "system": "air_path",
+      "note": "Odour transfer between kitchen/guest zones untested."
+    },
+    {
+      "id": "A-LEGIONELLA",
+      "system": "domestic_water",
+      "note": "Legionella risk near opening after stagnation."
+    },
+    {
+      "id": "A-BATTERY",
+      "system": "acs_locks",
+      "note": "Reduced battery life. Require new batteries + spares at handover."
+    }
+  ]
+}
