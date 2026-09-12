@@ -1,0 +1,8 @@
+{
+  "camera_id": "CAM-L12-CORRIDOR",
+  "use_case": "floor",
+  "floor": 12,
+  "in_count": 4,
+  "out_count": 1,
+  "faces_raw_retained": false
+}

@@ -1,0 +1,9 @@
+{
+  "camera_id": "CAM-PUMP-ROOM",
+  "use_case": "fm_safety",
+  "zone": "B1-PUMP-ROOM",
+  "ppe_missing": true,
+  "person_present": true,
+  "faces_raw_retained": false,
+  "hazard": "open_electrical_panel"
+}

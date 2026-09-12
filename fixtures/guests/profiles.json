@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "guest_id": "G-AYA",
+      "name": "Aya Rahman",
+      "market": "uae",
+      "language": "ar",
+      "dietary": [
+        "halal"
+      ],
+      "preferred_room_type": "king",
+      "quiet_room": true,
+      "marketing_opt_in": true,
+      "nights_ltm": 28
+    },
+    {
+      "guest_id": "G-NOOR",
+      "name": "Noor Al Falasi",
+      "market": "uae",
+      "language": "en",
+      "dietary": [
+        "none"
+      ],
+      "preferred_room_type": "suite",
+      "high_floor": true,
+      "marketing_opt_in": false,
+      "nights_ltm": 61
+    },
+    {
+      "guest_id": "G-MARCO",
+      "name": "Marco Veld",
+      "market": "generic",
+      "language": "en",
+      "dietary": [
+        "vegetarian"
+      ],
+      "preferred_room_type": "suite",
+      "arrival_transfer": true,
+      "marketing_opt_in": true,
+      "nights_ltm": 12
+    },
+    {
+      "guest_id": "G-SAM",
+      "name": "Sam Okonkwo",
+      "market": "generic",
+      "language": "en",
+      "dietary": [
+        "none"
+      ],
+      "preferred_room_type": "twin",
+      "marketing_opt_in": false,
+      "nights_ltm": 3
+    }
+  ]
+}

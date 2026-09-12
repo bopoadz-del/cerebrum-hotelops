@@ -1,0 +1,14 @@
+{
+  "asset_type": "fire_pump",
+  "asset_id": "FP-01",
+  "documents": [
+    "uncontrolled_photo_or_note"
+  ],
+  "photo_tags": [
+    "cover_closed",
+    "clip_obscuring_nameplate"
+  ],
+  "nameplate_readable": false,
+  "serial_on_certificate": "AFP-77821",
+  "serial_on_register": "AFP-77821"
+}

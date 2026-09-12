@@ -1,0 +1,9 @@
+{
+  "asset_type": "fire_pump",
+  "asset_id": "FP-01",
+  "test_line_to_tank": true,
+  "documents": ["flow_certificate"],
+  "nameplate_readable": true,
+  "serial_on_certificate": "AFP-77821",
+  "serial_on_register": "AFP-77821"
+}
