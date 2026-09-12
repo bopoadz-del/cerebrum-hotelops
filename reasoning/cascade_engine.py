@@ -7,6 +7,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from domain_kit.loader import load_kit
+from reasoning.sheet import class_b_meta
 
 
 @dataclass
@@ -34,6 +35,7 @@ class CascadeResult:
     slipped: dict[str, int]
     lrm_alerts: list[dict[str, Any]] = field(default_factory=list)
     recommended_mitigations: list[dict[str, Any]] = field(default_factory=list)
+    master_pacer: dict[str, Any] = field(default_factory=dict)
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -49,6 +51,8 @@ class CascadeResult:
             "slipped": self.slipped,
             "lrm_alerts": self.lrm_alerts,
             "recommended_mitigations": self.recommended_mitigations,
+            "master_pacer": self.master_pacer,
+            **class_b_meta(),
         }
 
 
@@ -59,7 +63,11 @@ class CascadeEngine:
         self.edges = kit.pre_opening_cascade["edges"]
         self.slip_multipliers = kit.pre_opening_cascade["slip_multipliers"]
         self.lrm = kit.pre_opening_lrm
-        self.mitigations = {m["milestone"]: m for m in kit.pre_opening_mitigations["library"]}
+        self.cascade_rules = kit.pre_opening_cascade_rules
+        self.mitigations = {m["id"]: m for m in kit.pre_opening_mitigations["library"]}
+        self.mitigations_by_programme: dict[str, list[dict[str, Any]]] = {}
+        for m in kit.pre_opening_mitigations["library"]:
+            self.mitigations_by_programme.setdefault(m.get("programme_milestone") or m.get("milestone"), []).append(m)
         self.successors: dict[str, list[tuple[str, int, bool]]] = defaultdict(list)
         self.predecessors: dict[str, list[tuple[str, int, bool]]] = defaultdict(list)
         for edge in self.edges:
@@ -109,7 +117,7 @@ class CascadeEngine:
 
         float_days = {mid: ls[mid] - es[mid] for mid in self.milestones}
         critical = [mid for mid in order if float_days[mid] == 0]
-        return CascadeResult(
+        result = CascadeResult(
             order=order,
             earliest_start=es,
             earliest_finish=ef,
@@ -121,6 +129,34 @@ class CascadeEngine:
             simulated_finish_days=project,
             slipped={mid: s.slip_days for mid, s in states.items() if s.slip_days},
         )
+        result.master_pacer = self.compute_master_pacer(result)
+        return result
+
+    def compute_master_pacer(self, schedule: CascadeResult) -> dict[str, Any]:
+        """Last approval on the licensing path — computed, not a constant.
+
+        Sheet §1.2: occupancy is hit by whichever licensing-path node has the
+        greatest earliest_finish. Fire/CD usually wins because it sits
+        downstream of commissioning, not because we hardcoded a month count.
+        """
+        rules = self.cascade_rules
+        path = list(rules.get("licensing_path_milestones") or [])
+        opening = rules.get("opening_milestone", "M14")
+        scored = [(schedule.earliest_finish.get(mid, -1), mid) for mid in path if mid in schedule.earliest_finish]
+        scored.sort()
+        winner = scored[-1][1] if scored else None
+        fire_nodes = set(rules.get("fire_cd_milestones") or [])
+        kind = "fire_cd" if winner in fire_nodes else "licensing_path"
+        return {
+            "milestone": winner,
+            "kind": kind,
+            "earliest_finish": schedule.earliest_finish.get(winner) if winner else None,
+            "computed_from": path,
+            "method": "max_earliest_finish_on_licensing_path",
+            "hits_opening_directly": winner in fire_nodes or winner == opening,
+            "mechanism": (rules.get("mechanism") or {}).get("summary"),
+            **class_b_meta(),
+        }
 
     def simulate(self, slips: dict[str, int] | None = None, states: dict[str, MilestoneState] | None = None) -> CascadeResult:
         """Apply slips (with compounding multipliers) and emit LRM alerts."""
@@ -140,9 +176,20 @@ class CascadeEngine:
         result = self.compute_critical_path(states)
         result.simulated_finish_days = result.project_days + extra_finish
         result.lrm_alerts = self.lrm_alerts(states, result)
-        result.recommended_mitigations = [
-            self.mitigations[mid] for mid in result.critical_path if mid in self.mitigations and states[mid].slip_days
-        ]
+        rec: list[dict[str, Any]] = []
+        for mid in result.critical_path:
+            if states[mid].slip_days:
+                rec.extend(self.mitigations_by_programme.get(mid, []))
+        if result.master_pacer.get("kind") == "fire_cd":
+            rec.extend(self.mitigations_by_programme.get("M13", []))
+        # de-dupe by mitigation id
+        seen: set[str] = set()
+        uniq = []
+        for row in rec:
+            if row["id"] not in seen:
+                seen.add(row["id"])
+                uniq.append(row)
+        result.recommended_mitigations = uniq
         return result
 
     def lrm_alerts(self, states: dict[str, MilestoneState], schedule: CascadeResult) -> list[dict[str, Any]]:
@@ -201,6 +248,18 @@ class CascadeEngine:
                         "severity": "critical",
                         "action": "invalidate_civil_defense_pack",
                         "detail": f"Fire pump evidence class {klass} is not statutory-grade.",
+                        **class_b_meta(),
                     }
                 )
+        if schedule.master_pacer.get("kind") == "fire_cd":
+            alerts.append(
+                {
+                    "id": "LRM-CD-PACER",
+                    "milestone": schedule.master_pacer.get("milestone"),
+                    "severity": "alert",
+                    "action": "treat_fire_cd_as_opening_pacer",
+                    "detail": "Computed master pacer is fire/CD (last approval on the licensing path).",
+                    **class_b_meta(),
+                }
+            )
         return alerts
