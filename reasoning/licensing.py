@@ -51,6 +51,7 @@ class LicensingEngine:
         overall = combine_verdicts(Verdict(r["verdict"]) for r in results if not r["optional"])
         fire_ids = {"UAE-CD", "GEN-FIRE"}
         fire_rows = [r for r in results if r["id"] in fire_ids]
+        # Computed pacer: the unfinished fire/CD row, else the unfinished licence with the most missing prereqs.
         pacer = None
         if fire_rows and fire_rows[0]["verdict"] != "PASS":
             pacer = fire_rows[0]["id"]
