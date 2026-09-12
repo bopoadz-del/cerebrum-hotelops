@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from api.auth import Principal, get_principal
+from api.auth import Principal, get_principal, require_operator
 from hotelops.actions import get_registry
 from reasoning.guard import GuardError
 from reasoning.licensing import LicensingEngine
@@ -17,5 +17,5 @@ def pack(market: str, _: Principal = Depends(get_principal)):
 
 
 @router.post("/evaluate")
-def evaluate(body: dict, principal: Principal = Depends(get_principal)):
+def evaluate(body: dict, principal: Principal = Depends(require_operator)):
     return get_registry().run("licensing.evaluate", body, actor=principal.actor, role=principal.role)

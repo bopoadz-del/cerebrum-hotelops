@@ -22,6 +22,8 @@ jobs:
           HOTELOPS_FIXTURE_MODE: "1"
           HOTELOPS_LLM_PROVIDER: fake
           DATABASE_URL: sqlite+pysqlite:///:memory:
+          HOTELOPS_OPERATOR_TOKEN: operator-pilot
+          HOTELOPS_REVIEWER_TOKEN: reviewer-pilot
         run: pytest
       - name: KSA stripped — UAE + generic only
         run: |

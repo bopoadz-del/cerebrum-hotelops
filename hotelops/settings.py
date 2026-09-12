@@ -21,13 +21,19 @@ class Settings(BaseSettings):
     log_level: str = Field(default="info", validation_alias=AliasChoices("HOTELOPS_LOG_LEVEL", "log_level"))
     fixture_mode: bool = Field(default=True, validation_alias=AliasChoices("HOTELOPS_FIXTURE_MODE", "fixture_mode"))
 
+    # No built-in tokens. Live/API contexts must set both via env; empty means refuse.
     operator_token: str = Field(
-        default="operator-pilot",
+        default="",
         validation_alias=AliasChoices("HOTELOPS_OPERATOR_TOKEN", "operator_token"),
     )
     reviewer_token: str = Field(
-        default="reviewer-pilot",
+        default="",
         validation_alias=AliasChoices("HOTELOPS_REVIEWER_TOKEN", "reviewer_token"),
+    )
+    # Comma-separated browser origins. Never "*". Local Vite defaults only.
+    cors_origins: str = Field(
+        default="http://127.0.0.1:43123,http://localhost:43123",
+        validation_alias=AliasChoices("HOTELOPS_CORS_ORIGINS", "cors_origins"),
     )
 
     database_url: str = "sqlite+pysqlite:///./data/local/hotelops.db"
@@ -62,6 +68,30 @@ class Settings(BaseSettings):
         if self.fixture_mode:
             return False
         return all(bool(getattr(self, k, "")) for k in keys)
+
+    def cors_origin_list(self) -> list[str]:
+        origins: list[str] = []
+        for part in self.cors_origins.split(","):
+            origin = part.strip()
+            if origin and origin != "*":
+                origins.append(origin)
+        return origins
+
+    def auth_tokens_configured(self) -> bool:
+        return bool(self.operator_token.strip()) and bool(self.reviewer_token.strip())
+
+
+class AuthTokensNotConfigured(RuntimeError):
+    """API must not start (or authenticate) without explicit operator/reviewer tokens."""
+
+
+def require_auth_tokens(settings: Settings | None = None) -> None:
+    resolved = settings or get_settings()
+    if not resolved.auth_tokens_configured():
+        raise AuthTokensNotConfigured(
+            "HOTELOPS_OPERATOR_TOKEN and HOTELOPS_REVIEWER_TOKEN must both be set to "
+            "non-empty values. HotelOps has no built-in default tokens."
+        )
 
 
 @lru_cache(maxsize=1)

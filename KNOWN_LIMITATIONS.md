@@ -15,6 +15,13 @@ missing product modules.
 5. **Kimi / Azure LLMs** — optional. Default provider is the deterministic
    fake LLM. Missing secrets produce an honest skip (`LLMSkip`), not a
    fabricated completion.
+6. **Auth tokens are fail-closed** — `HOTELOPS_OPERATOR_TOKEN` and
+   `HOTELOPS_REVIEWER_TOKEN` have no code defaults. The API refuses to start
+   (and refuses all auth) when either is unset/empty. Local/CI must set them
+   via env (see `.env.example`). Rotate before any live pilot. HTTP audit
+   events are attributed from the authenticated Principal, not client
+   `x-actor` / `x-role` headers. Authenticated mutating requests return 503
+   if the audit row cannot be persisted.
 
 Not in this product (by owner constraint, not a leftover stub):
 

@@ -25,4 +25,5 @@ def tools(_: Principal = Depends(get_principal)):
 
 @router.post("/retrieve")
 def mcp_retrieve(body: dict, _: Principal = Depends(get_principal)):
+    # Reviewers may search the kit; this path does not persist product state.
     return {"hits": retrieve(body.get("query", ""), limit=int(body.get("limit", 8)))}

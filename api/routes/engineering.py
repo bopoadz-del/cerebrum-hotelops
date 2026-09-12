@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from api.auth import Principal, get_principal
+from api.auth import Principal, get_principal, require_operator
 from connectors.maximo import MaximoConnector
 from domain_kit.loader import load_kit
 from hotelops.actions import get_registry
@@ -19,10 +19,10 @@ def invalidity(_: Principal = Depends(get_principal)):
 
 
 @router.post("/classify")
-def classify(body: dict, principal: Principal = Depends(get_principal)):
+def classify(body: dict, principal: Principal = Depends(require_operator)):
     return get_registry().run("engineering.classify", body, actor=principal.actor, role=principal.role)
 
 
 @router.post("/assets/ingest")
-def ingest_assets(principal: Principal = Depends(get_principal)):
+def ingest_assets(principal: Principal = Depends(require_operator)):
     return MaximoConnector().ingest("assets")

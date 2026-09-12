@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT))
 os.environ.setdefault("HOTELOPS_FIXTURE_MODE", "1")
 os.environ.setdefault("HOTELOPS_LLM_PROVIDER", "fake")
 os.environ.setdefault("DATABASE_URL", "sqlite+pysqlite:///:memory:")
+# Pytest must set tokens explicitly — Settings has no built-in defaults.
 os.environ.setdefault("HOTELOPS_OPERATOR_TOKEN", "operator-pilot")
 os.environ.setdefault("HOTELOPS_REVIEWER_TOKEN", "reviewer-pilot")
 

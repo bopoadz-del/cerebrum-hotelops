@@ -12,7 +12,7 @@ from api.audit_middleware import AuditMiddleware
 from api.mcp_server import router as mcp_router
 from api.routes import actions, audit, documents, engineering, guest, licensing, operational, pre_opening
 from hotelops.db import init_db
-from hotelops.settings import get_settings
+from hotelops.settings import get_settings, require_auth_tokens
 
 settings = get_settings()
 
@@ -25,8 +25,8 @@ app = FastAPI(
 app.add_middleware(AuditMiddleware)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=settings.cors_origin_list(),
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -44,6 +44,7 @@ app.include_router(mcp_router)
 
 @app.on_event("startup")
 def _startup() -> None:
+    require_auth_tokens()
     init_db()
 
 

@@ -74,3 +74,12 @@ Fixture-driven connectors (OK):
 ## G. Tests — **PASS** (when deps present)
 
 Offline fixture mode: 45 passed historically in cloud-agent session.
+
+---
+
+## H. Live-pilot auth (fail-closed)
+
+`Settings` does **not** default `operator_token` / `reviewer_token` to
+`operator-pilot` / `reviewer-pilot`. Those strings exist only in `.env.example`,
+compose, and pytest/CI env. The API startup and `get_principal` refuse empty
+tokens. CORS is an explicit origin allowlist (`HOTELOPS_CORS_ORIGINS`), not `*`.
