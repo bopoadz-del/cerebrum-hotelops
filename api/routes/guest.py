@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
 from agents.coordinator import run_agent
-from api.auth import Principal, get_principal
+from api.auth import Principal, get_principal, require_operator
 from connectors.opera import OperaConnector
 from guest_intelligence.booking_intelligence import BookingIntelligence
 from guest_intelligence.crm import GuestCRM
@@ -28,7 +28,7 @@ def profile(guest_id: str, _: Principal = Depends(get_principal)):
 
 
 @router.post("/crm")
-def crm(body: dict, _: Principal = Depends(get_principal)):
+def crm(body: dict, _: Principal = Depends(require_operator)):
     return GuestCRM().ingest(body["event_type"], body.get("payload") or {})
 
 
@@ -38,10 +38,10 @@ def report(_: Principal = Depends(get_principal)):
 
 
 @router.post("/reservations/ingest")
-def ingest_reservations(_: Principal = Depends(get_principal)):
+def ingest_reservations(_: Principal = Depends(require_operator)):
     return OperaConnector().ingest("reservations")
 
 
 @router.post("/agent")
-def agent(body: dict, _: Principal = Depends(get_principal)):
+def agent(body: dict, _: Principal = Depends(require_operator)):
     return run_agent(body.get("intent", "guest loyalty"), body, body.get("market", "uae"))

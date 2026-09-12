@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from api.auth import Principal, get_principal
+from api.auth import Principal, get_principal, require_operator
 from hotelops.db import get_sessionmaker, init_db
 from hotelops.models import Document
 from hotelops.retrieval import retrieve
@@ -32,7 +32,7 @@ def list_docs(_: Principal = Depends(get_principal)):
 
 
 @router.post("")
-def create_doc(doc: DocIn, _: Principal = Depends(get_principal)):
+def create_doc(doc: DocIn, _: Principal = Depends(require_operator)):
     init_db()
     session = get_sessionmaker()()
     row = Document(**doc.model_dump())

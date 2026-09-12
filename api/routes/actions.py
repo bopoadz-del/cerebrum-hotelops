@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends
 
-from api.auth import Principal, get_principal
+from api.auth import Principal, get_principal, require_operator
 from hotelops.actions import get_registry
 from hotelops.db import get_sessionmaker, init_db
 from hotelops.models import ActionRun
@@ -14,7 +14,7 @@ def list_actions(_: Principal = Depends(get_principal)):
 
 
 @router.post("/{action_id}")
-def run_action(action_id: str, body: dict, principal: Principal = Depends(get_principal)):
+def run_action(action_id: str, body: dict, principal: Principal = Depends(require_operator)):
     return get_registry().run(action_id, body, actor=principal.actor, role=principal.role)
 
 

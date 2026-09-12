@@ -15,6 +15,8 @@ Pilot-ready hospitality AI platform. **Markets: UAE + generic only.** KSA is uns
 ```bash
 pip install -r requirements.txt
 HOTELOPS_FIXTURE_MODE=1 HOTELOPS_LLM_PROVIDER=fake \
+  HOTELOPS_OPERATOR_TOKEN=operator-pilot \
+  HOTELOPS_REVIEWER_TOKEN=reviewer-pilot \
   DATABASE_URL=sqlite+pysqlite:///:memory: pytest
 python scripts/check_vendor_lock.py
 ```

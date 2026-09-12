@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 
 from agents.coordinator import run_agent
-from api.auth import Principal, get_principal
+from api.auth import Principal, get_principal, require_operator
 from domain_kit.loader import load_kit
 from hotelops.actions import get_registry
 
@@ -26,10 +26,10 @@ def mitigations(_: Principal = Depends(get_principal)):
 
 
 @router.post("/simulate")
-def simulate(body: dict, principal: Principal = Depends(get_principal)):
+def simulate(body: dict, principal: Principal = Depends(require_operator)):
     return get_registry().run("pre_opening.simulate", body, actor=principal.actor, role=principal.role)
 
 
 @router.post("/agent")
-def agent(body: dict, principal: Principal = Depends(get_principal)):
+def agent(body: dict, principal: Principal = Depends(require_operator)):
     return run_agent(body.get("intent", "pre-opening cascade"), body, body.get("market", "uae"))
