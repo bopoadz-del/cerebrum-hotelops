@@ -1,0 +1,36 @@
+{
+  "vendor": "Cerebrum-Blocks",
+  "source": "https://github.com/bopoadz-del/Cerebrum-Blocks",
+  "commit": "d7cff230453efd273388491e1cbf1d18f3ebefd5",
+  "kits": {
+    "hotel_management": {
+      "path": "blocks/hotel_management",
+      "digest": "43ebc8d12d893e297fabde37ddfe7b46a1807568e9e73b4b2109edfafe4e6c1c"
+    },
+    "event_bus": {
+      "path": "blocks/event_bus",
+      "digest": "64fcc8b0cf0ec2ae38271ad58f1ece7195c660ef5fd99af36655ef200c3da30f"
+    },
+    "action_contract": {
+      "path": "blocks/action_contract",
+      "digest": "3702259e861b745b199743e5ce50706f2faadd5822e5414a8a648635266f3540"
+    },
+    "formula_executor_v2": {
+      "path": "blocks/formula_executor_v2",
+      "digest": "9152c421a960b405dbdc52523309b8c0ba4f5581fb39f2fc32b87ea020a9bd70"
+    },
+    "pdf_v2": {
+      "path": "blocks/pdf_v2",
+      "digest": "a90b0bf1f4d64dfec4444aa6b135564df3a3d7b168ca367b4a27f6a14de63ca5"
+    },
+    "ocr_v2": {
+      "path": "blocks/ocr_v2",
+      "digest": "61ececf76ee1b7277da07c207efc296a3dc1877ad708f0968c0f060638e3572b"
+    },
+    "hotel_v2": {
+      "path": "blocks/hotel_v2",
+      "digest": "b372c0756d7538103ad4f2a57024c5f16fad4bf80f3d02ebce68ab58c87f2bbe"
+    }
+  },
+  "tree_digest": "b3c944a64ef1321ef40403cb24611d7b1b73cb42fe91da091db8155b8c767196"
+}
