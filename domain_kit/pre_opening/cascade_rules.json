@@ -1,0 +1,38 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "section": "1.2",
+  "most_common_slip": "fire_cd_approval",
+  "mechanism": {
+    "id": "ce_matrix_gap",
+    "summary": "Cause-and-effect matrix gaps: individual tests pass, integrated interfaced response fails.",
+    "interface_chain": [
+      "detection",
+      "dampers",
+      "pressurisation",
+      "lifts",
+      "door_release",
+      "bms"
+    ],
+    "never_infer_integrated_from_unit_tests": true,
+    "disputed_attribution_extends_delay": true
+  },
+  "mitigation": "Early C&E / FLS review from concept through shop drawings.",
+  "cascade": "Last approval on the licensing path hits the opening date directly.",
+  "opening_milestone": "M14",
+  "grand_opening_milestone": "M15",
+  "licensing_path_milestones": [
+    "M07",
+    "M13"
+  ],
+  "fire_cd_milestones": [
+    "M13"
+  ],
+  "pacing": {
+    "method": "computed_last_approval_on_licensing_path",
+    "not": "hardcoded_lead_time_constant",
+    "rule": "Among licensing-path milestones that gate opening, the node with the greatest earliest_finish is the master pacer. Fire/CD typically computes as that node because it sits downstream of commissioning and holds occupancy."
+  }
+}

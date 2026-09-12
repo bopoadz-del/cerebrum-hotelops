@@ -1,0 +1,89 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "name": "Late Risk Management",
+  "section": "1.3",
+  "thresholds": {
+    "watch": 7,
+    "alert": 14,
+    "critical": 21
+  },
+  "clocks": [
+    {
+      "id": "SYS-GOLIVE",
+      "safe": "T-3m",
+      "compressed": "T-1m",
+      "severity_if_compressed": "high"
+    },
+    {
+      "id": "OSE-ORDER",
+      "safe": "T-6m",
+      "compressed": "T-3m_short_lead_only",
+      "severity_if_compressed": "alert"
+    },
+    {
+      "id": "MASS-RECRUIT",
+      "safe": "T-3_to_T-6",
+      "key_hire_gm": "T-12",
+      "eng_hk_min": "T-3"
+    },
+    {
+      "id": "LICENCE-SUBMIT",
+      "safe": "prereq_id_T-2",
+      "compressed": "T-1",
+      "pacer": "fire_cd"
+    }
+  ],
+  "rules": [
+    {
+      "id": "LRM-01",
+      "when": "float_days < 0",
+      "severity": "critical",
+      "action": "resequence_critical_path"
+    },
+    {
+      "id": "LRM-02",
+      "when": "milestone == M07 and slip_days >= 7",
+      "severity": "alert",
+      "action": "stand_up_cx_war_room"
+    },
+    {
+      "id": "LRM-03",
+      "when": "milestone == M13 and missing_license",
+      "severity": "critical",
+      "action": "block_soft_opening"
+    },
+    {
+      "id": "LRM-04",
+      "when": "milestone == M12 and (grms_room_map_incomplete or systems_go_live_compressed_below_T-3)",
+      "severity": "alert",
+      "action": "refuse_guest_room_handover"
+    },
+    {
+      "id": "LRM-05",
+      "when": "fire_pump_evidence_class in [C, D, Unprovable] or test_line_to_tank",
+      "severity": "critical",
+      "action": "invalidate_civil_defense_pack"
+    },
+    {
+      "id": "LRM-06",
+      "when": "individual_fls_tests_pass and integrated_ce_unproven",
+      "severity": "critical",
+      "action": "refuse_occupancy_inference"
+    },
+    {
+      "id": "LRM-07",
+      "when": "ose_delivered_unusable_fit_function",
+      "severity": "alert",
+      "action": "hold_os_e_acceptance"
+    },
+    {
+      "id": "LRM-08",
+      "when": "key_hire_eng_or_hk_missing_at_T-3",
+      "severity": "alert",
+      "action": "stand_up_sister_property_task_force"
+    }
+  ]
+}

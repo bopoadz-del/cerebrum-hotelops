@@ -1,0 +1,117 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "layer": "statutory_floor",
+  "market": "uae",
+  "authoritative_frequencies": false,
+  "never_estimate": true,
+  "note": "Jurisdiction floor only: fire, lift, pressure vessel, water hygiene. Frequencies are NOT estimated here. Refer to the named statute text and the operator SOP layer.",
+  "duties": [
+    {
+      "id": "STAT-FIRE",
+      "asset_types": [
+        "fire_pump",
+        "fire_alarm",
+        "emergency_lighting",
+        "kitchen_hood"
+      ],
+      "authority": "civil_defense",
+      "legacy_task_id": "PPM-CD-FIRE-PUMP"
+    },
+    {
+      "id": "STAT-LIFT",
+      "asset_types": [
+        "elevator"
+      ],
+      "authority": "emirates_authority",
+      "legacy_task_id": "PPM-LIFT"
+    },
+    {
+      "id": "STAT-PRESSURE",
+      "asset_types": [
+        "pressure_vessel",
+        "generator"
+      ],
+      "authority": "civil_defense_and_operator",
+      "legacy_task_id": "PPM-GENSET"
+    },
+    {
+      "id": "STAT-WATER",
+      "asset_types": [
+        "domestic_water",
+        "backflow_preventer"
+      ],
+      "authority": "municipality_health",
+      "legacy_task_id": "PPM-LEGIONELLA"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "PPM-CD-FIRE-PUMP",
+      "asset_type": "fire_pump",
+      "authority": "civil_defense",
+      "require_sop": true,
+      "require_witness": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-FIRE"
+    },
+    {
+      "id": "PPM-CD-ALARM",
+      "asset_type": "fire_alarm",
+      "authority": "civil_defense",
+      "require_sop": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-FIRE"
+    },
+    {
+      "id": "PPM-CD-ELIGHT",
+      "asset_type": "emergency_lighting",
+      "authority": "civil_defense",
+      "require_sop": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-FIRE"
+    },
+    {
+      "id": "PPM-LIFT",
+      "asset_type": "elevator",
+      "authority": "emirates_authority",
+      "require_sop": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-LIFT"
+    },
+    {
+      "id": "PPM-HOOD",
+      "asset_type": "kitchen_hood",
+      "authority": "civil_defense",
+      "require_sop": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-FIRE"
+    },
+    {
+      "id": "PPM-LEGIONELLA",
+      "asset_type": "domestic_water",
+      "authority": "municipality_health",
+      "require_sop": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-WATER"
+    },
+    {
+      "id": "PPM-BACKFLOW",
+      "asset_type": "backflow_preventer",
+      "authority": "dewa_or_adwea",
+      "require_sop": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-WATER"
+    },
+    {
+      "id": "PPM-GENSET",
+      "asset_type": "generator",
+      "authority": "civil_defense",
+      "require_sop": true,
+      "cadence_authoritative": false,
+      "statutory_duty": "STAT-PRESSURE"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "evidence_class": "B",
+  "source": "domain_encoding_sheet_sep2026",
+  "document_status": "UNVERIFIED",
+  "caveat": "UNVERIFIED Class B (expert recall). Not Class A. Promote only with owner-uploaded artefacts.",
+  "section": "2.1",
+  "approvers": {
+    "designer": "required",
+    "operator": "optional",
+    "owner_budget": "required"
+  },
+  "procurement": "centralized_owner_via_agent",
+  "real_contest": "unassigned_operational_items",
+  "not_the_contest": "ffe_versus_ose_misclassification",
+  "checkpoint": {
+    "id": "M-6",
+    "items": [
+      "iptv_displays",
+      "desk_power"
+    ],
+    "action": "assign_owner_and_budget_before_ffe_freeze"
+  }
+}

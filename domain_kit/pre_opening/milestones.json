@@ -1,0 +1,227 @@
+{
+  "property_archetype": "full_service_hotel",
+  "markets": [
+    "uae",
+    "generic"
+  ],
+  "opening_clock_days": 540,
+  "milestones": [
+    {
+      "id": "M01",
+      "name": "Site handover / vacant possession",
+      "duration_days": 14,
+      "owners": [
+        "owner",
+        "pm"
+      ],
+      "gate": "legal_possession",
+      "deliverables": [
+        "handover_certificate",
+        "key_schedule",
+        "utility_accounts"
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "Design freeze / FF&E specification lock",
+      "duration_days": 28,
+      "owners": [
+        "interior",
+        "operator_doe"
+      ],
+      "gate": "spec_signoff",
+      "deliverables": [
+        "ffe_book",
+        "room_type_matrix",
+        "brand_standards_gap",
+        "isp_circuit_order"
+      ]
+    },
+    {
+      "id": "M03",
+      "name": "Long-lead procurement released",
+      "duration_days": 45,
+      "owners": [
+        "procurement"
+      ],
+      "gate": "po_issued",
+      "deliverables": [
+        "kitchen_equipment_pos",
+        "lift_pos",
+        "grms_pos",
+        "fire_pump_pos",
+        "cctv_head_end_po",
+        "isp_failover_po"
+      ]
+    },
+    {
+      "id": "M04",
+      "name": "Structure complete / watertight",
+      "duration_days": 60,
+      "owners": [
+        "main_contractor"
+      ],
+      "gate": "envelope_closed",
+      "deliverables": [
+        "watertight_certificate",
+        "roof_as_built"
+      ]
+    },
+    {
+      "id": "M05",
+      "name": "MEP first fix complete",
+      "duration_days": 50,
+      "owners": [
+        "mep"
+      ],
+      "gate": "first_fix_inspection",
+      "deliverables": [
+        "containment_photos",
+        "riser_schedules"
+      ]
+    },
+    {
+      "id": "M06",
+      "name": "Facade and envelope certified",
+      "duration_days": 40,
+      "owners": [
+        "facade"
+      ],
+      "gate": "facade_snag_closed",
+      "deliverables": [
+        "curtain_wall_test",
+        "air_leakage"
+      ]
+    },
+    {
+      "id": "M07",
+      "name": "MEP second fix + commissioning start",
+      "duration_days": 55,
+      "owners": [
+        "commissioning"
+      ],
+      "gate": "cx_plan_live",
+      "deliverables": [
+        "cx_plan",
+        "fire_pump_factory_test",
+        "bms_points_list"
+      ]
+    },
+    {
+      "id": "M08",
+      "name": "FF&E install (guestrooms + public)",
+      "duration_days": 45,
+      "owners": [
+        "ffe"
+      ],
+      "gate": "model_room_accepted",
+      "deliverables": [
+        "model_room_signoff",
+        "install_programme"
+      ]
+    },
+    {
+      "id": "M09",
+      "name": "OS&E delivery and par stocking",
+      "duration_days": 30,
+      "owners": [
+        "rooms",
+        "fb"
+      ],
+      "gate": "par_levels_met",
+      "deliverables": [
+        "linen_par",
+        "os_e_inventory"
+      ]
+    },
+    {
+      "id": "M10",
+      "name": "Pre-opening team onboarding",
+      "duration_days": 35,
+      "owners": [
+        "hr",
+        "gm"
+      ],
+      "gate": "staff_in_post",
+      "deliverables": [
+        "org_chart",
+        "visa_tracker",
+        "training_matrix"
+      ]
+    },
+    {
+      "id": "M11",
+      "name": "Soft services mobilisation",
+      "duration_days": 25,
+      "owners": [
+        "hk",
+        "fb",
+        "security"
+      ],
+      "gate": "sop_issued",
+      "deliverables": [
+        "hk_sop",
+        "fb_sop",
+        "security_post_orders"
+      ]
+    },
+    {
+      "id": "M12",
+      "name": "Systems go-live (PMS, POS, GRMS, LMS)",
+      "duration_days": 20,
+      "owners": [
+        "it",
+        "revenue"
+      ],
+      "gate": "systems_cutover",
+      "deliverables": [
+        "opera_config",
+        "micros_simphony",
+        "grms_room_map",
+        "loyalty_interface"
+      ]
+    },
+    {
+      "id": "M13",
+      "name": "Authority inspections and licensing",
+      "duration_days": 30,
+      "owners": [
+        "compliance"
+      ],
+      "gate": "trade_license_plus_civil_defense",
+      "deliverables": [
+        "civil_defense_noc",
+        "tourism_license",
+        "food_permit"
+      ]
+    },
+    {
+      "id": "M14",
+      "name": "Soft opening",
+      "duration_days": 21,
+      "owners": [
+        "gm"
+      ],
+      "gate": "first_paying_guest",
+      "deliverables": [
+        "soft_open_checklist",
+        "guest_feedback_loop"
+      ]
+    },
+    {
+      "id": "M15",
+      "name": "Grand opening",
+      "duration_days": 7,
+      "owners": [
+        "owner",
+        "gm"
+      ],
+      "gate": "brand_launch",
+      "deliverables": [
+        "opening_certificate",
+        "warranty_register",
+        "asset_register_v1"
+      ]
+    }
+  ]
+}
