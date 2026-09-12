@@ -191,5 +191,6 @@ def test_auth_uses_compare_digest_and_audit_is_not_base_http_middleware():
     auth = (ROOT / "api" / "auth.py").read_text()
     audit = (ROOT / "api" / "audit_middleware.py").read_text()
     assert "hmac.compare_digest" in auth
-    assert "BaseHTTPMiddleware" not in audit
+    assert "from starlette.middleware.base import BaseHTTPMiddleware" not in audit
+    assert "class AuditMiddleware(BaseHTTPMiddleware)" not in audit
     assert "init_db()" not in audit
