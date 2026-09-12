@@ -1,0 +1,10 @@
+{
+  "camera_id": "CAM-LOBBY-01",
+  "edge_node": "jetson-optional",
+  "ts": "2026-09-12T08:15:00Z",
+  "use_case": "queue",
+  "people_count": 11,
+  "queue_wait_seconds_est": 420,
+  "faces_raw_retained": false,
+  "opt_in_vip_ids": []
+}

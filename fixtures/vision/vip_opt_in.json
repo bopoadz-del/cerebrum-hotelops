@@ -1,0 +1,10 @@
+{
+  "camera_id": "CAM-ARRIVAL-01",
+  "use_case": "vip",
+  "opt_in_vip_ids": [
+    "G-NOOR"
+  ],
+  "match_confidence": 0.91,
+  "faces_raw_retained": false,
+  "ts": "2026-09-12T14:02:00Z"
+}
