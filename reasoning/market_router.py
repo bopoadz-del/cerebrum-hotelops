@@ -1,4 +1,4 @@
-"""Route work to UAE or generic markets only. KSA is refused."""
+"""Route work to UAE or generic. Every other market — including KSA — is refused."""
 
 from __future__ import annotations
 
@@ -10,33 +10,25 @@ from reasoning.sheet import class_b_meta
 
 
 class MarketRouter:
-    """UAE + generic only. No KSA pack or branch."""
-
     DEMO = {"uae", "generic"}
-    UAE = {"uae", "dubai", "abu_dhabi", "abudhabi", "sharjah", "ajman"}
 
     def normalize(self, market: str | None, *, demo_only: bool = False) -> str:
         code = (market or "generic").lower().strip()
         guard_request(market=code, demo_only=demo_only)
-        if code in self.UAE:
+        if code in {"dubai", "abu_dhabi", "abudhabi", "sharjah", "ajman", "uae"}:
             return "uae"
         if code == "generic":
             return "generic"
         raise GuardError("market_unsupported", f"Market {market!r} is not UAE or generic.")
 
-    def resolve_market(self, market: str) -> str:
-        return self.normalize(market)
-
     def licensing_pack(self, market: str | None) -> dict[str, Any]:
         kit = load_kit()
         code = self.normalize(market)
         if code == "uae":
-            prereq = getattr(kit, "licensing_prereq", None)
-            maps = (prereq.get("maps") if isinstance(prereq, dict) else None) or {}
             return {
                 "market": "uae",
                 "licenses": kit.licensing_uae["licenses"],
-                "prerequisites": maps,
+                "prerequisites": kit.licensing_prereq["maps"],
                 **class_b_meta(),
             }
         return {
